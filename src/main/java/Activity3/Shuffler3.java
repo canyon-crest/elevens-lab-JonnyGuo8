@@ -8,7 +8,7 @@ public class Shuffler3 {
 	 * The number of consecutive shuffle steps to be performed in each call
 	 * to each sorting procedure.
 	 */
-	private static final int SHUFFLE_COUNT = 1;
+	private static final int SHUFFLE_COUNT = 5;
 
 
 	/**
@@ -18,7 +18,7 @@ public class Shuffler3 {
 	public static void main(String[] args) {
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive perfect shuffles:");
-		int[] values1 = {0, 1, 2, 3};
+		int[] values1 = {0, 1, 2, 3,4};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			perfectShuffle(values1);
 			System.out.print("  " + j + ":");
@@ -52,6 +52,20 @@ public class Shuffler3 {
 	 */
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+		int k =0;
+		for(int i = 0;i<(values.length+1)/2;i++) {
+			shuffled[k]=values[i];
+			k+=2;
+		}
+		k=1;
+		for(int i =(values.length+1)/2;i<values.length;i++) {
+			shuffled[k]=values[i];
+			k+=2;
+		}
+		for(int i = 0;i<values.length;i++) {
+			values[i]=shuffled[i];
+		}
 	}
 
 	/**
@@ -67,5 +81,29 @@ public class Shuffler3 {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] unpicked = new int[values.length];
+		for(int i = 0;i<values.length;i++) {
+			unpicked[i]=values[i];
+		}
+		int[] shuffled = new int[values.length];
+		for(int i = 0;i<values.length;i++) {
+			int rand = (int)(Math.random()*values.length);
+			while(unpicked[rand]==-1) {
+				rand = (int)(Math.random()*values.length);
+			}
+			shuffled[i]=unpicked[rand];
+			unpicked[rand]=-1;
+		}
+		for(int i = 0;i<values.length;i++) {
+			values[i]=shuffled[i];
+		}
+	}
+	public String flip() {
+		double rand = Math.random();
+		if(rand>0.666) {
+			return "heads";
+		}else {
+			return "tails";
+		}
 	}
 }
