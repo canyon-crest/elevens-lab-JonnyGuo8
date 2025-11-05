@@ -64,7 +64,12 @@ public class Deck4 {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
-		this.size = 0; // remove me
+		for(int i = cards.size()-1;i>=1;i--) {
+			int r = (int) (Math.random()*i);
+			Card4 temp = cards.get(i);
+			cards.set(i, cards.get(r));
+			cards.set(r, temp);
+		}
 	}
 
 	/**

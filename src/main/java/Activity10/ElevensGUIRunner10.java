@@ -10,7 +10,7 @@ public class ElevensGUIRunner10 {
 	 * @param args is not used.
 	 */
 	public static void main(String[] args) {
-		Board10 board = new ElevensBoard10();
+		Board10 board = new ThirteensBoard10();
 		CardGameGUI10 gui = new CardGameGUI10(board);
 		gui.displayGame();
 	}
